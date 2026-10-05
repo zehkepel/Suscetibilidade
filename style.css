@@ -1,0 +1,732 @@
+/* ==========================================================================
+   GeoReport Design System - v2.0 (GIS Dark Glassmorphism Standard)
+   Identidade Gráfica Oficial para Plataformas de Geoprocessamento e Cartografia
+   ========================================================================== */
+
+:root {
+    /* Cores de Fundo (Light SGB) */
+    --gr-bg-main: #f4f6f9;
+    --gr-bg-surface: #ffffff;
+    --gr-bg-surface-hover: #f8fafc;
+    --gr-bg-glass: rgba(255, 255, 255, 0.95);
+    --gr-bg-glass-card: rgba(0, 0, 0, 0.02);
+
+    /* Cores Primárias e Destaque SGB/gov.br */
+    --gr-primary: #1351b4;
+    --gr-primary-dark: #0c326f;
+    --gr-primary-glow: rgba(19, 81, 180, 0.15);
+    --gr-accent-emerald: #138a36;
+    --gr-accent-purple: #ffcd07;
+
+    /* Gradientes */
+    --gr-grad-primary: linear-gradient(135deg, #1351b4 0%, #2670e8 100%);
+    --gr-grad-header: #ffffff;
+    --gr-grad-card-header: #f8fafc;
+
+    /* Texto */
+    --gr-text-main: #333333;
+    --gr-text-muted: #555555;
+    --gr-text-dim: #777777;
+
+    /* Bordas e Sombras */
+    --gr-border: #e2e8f0;
+    --gr-border-active: #1351b4;
+    --gr-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --gr-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --gr-shadow-glow: 0 0 10px rgba(19, 81, 180, 0.2);
+
+    /* Raios e Tipografia */
+    --gr-radius-sm: 6px;
+    --gr-radius-md: 10px;
+    --gr-radius-lg: 14px;
+    --gr-font: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Mapeamento de Legado */
+    --bg-dark: var(--gr-bg-main);
+    --bg-card: var(--gr-bg-surface);
+    --bg-card-hover: var(--gr-bg-surface-hover);
+    --border-color: var(--gr-border);
+    --primary: var(--gr-primary);
+    --primary-hover: var(--gr-primary-dark);
+    --accent: var(--gr-accent-emerald);
+    --text-main: var(--gr-text-main);
+    --text-muted: var(--gr-text-muted);
+    --shadow: var(--gr-shadow-md);
+}
+
+/* Base & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--gr-font);
+}
+
+body {
+    background-color: var(--gr-bg-main);
+    color: var(--gr-text-main);
+    height: 100vh;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbars Premium */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--gr-bg-main);
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gr-primary);
+    box-shadow: var(--gr-shadow-glow);
+}
+
+/* App Structure */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header GeoReport */
+.app-header {
+    background: var(--gr-bg-surface);
+    border-bottom: 1px solid var(--gr-border);
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--gr-shadow-md);
+    z-index: 1000;
+    height: 56px;
+    backdrop-filter: blur(10px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 1.5rem;
+    color: var(--gr-primary);
+    filter: drop-shadow(0 0 8px var(--gr-primary-glow));
+}
+
+.brand-text h1 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--gr-text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-text h1 span {
+    font-size: 0.7rem;
+    background: var(--gr-grad-primary);
+    color: #ffffff;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px var(--gr-shadow-glow);
+}
+
+.brand-text p {
+    font-size: 0.72rem;
+    color: var(--gr-text-muted);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.badge-status {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--gr-accent-emerald);
+    background: rgba(19, 138, 54, 0.12);
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(19, 138, 54, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Layout Principal */
+.app-content {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 56px);
+    overflow: hidden;
+}
+
+/* Sidebar GeoReport */
+.sidebar {
+    width: 360px;
+    min-width: 360px;
+    background-color: var(--gr-bg-main);
+    border-right: 1px solid var(--gr-border);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    max-height: 100%;
+    z-index: 900;
+}
+
+/* Mode Selector Bar (Troca entre Movimentos de Massa e Corridas & Enxurradas) */
+.mode-selector-bar {
+    display: flex;
+    background: var(--gr-bg-surface);
+    border: 1px solid var(--gr-border);
+    border-radius: var(--gr-radius-md);
+    padding: 4px;
+    gap: 4px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 8px 6px;
+    background: transparent;
+    border: none;
+    border-radius: var(--gr-radius-sm);
+    color: var(--gr-text-muted);
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.mode-btn:hover {
+    color: var(--gr-text-main);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.mode-btn.active {
+    background: var(--gr-grad-primary);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 2px 8px var(--gr-shadow-glow);
+}
+
+/* Cards Accordion GeoReport */
+.card-panel {
+    background-color: var(--gr-bg-surface);
+    border: 1px solid var(--gr-border);
+    border-radius: var(--gr-radius-md);
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: var(--gr-shadow-sm);
+}
+
+.card-panel:hover {
+    border-color: var(--gr-shadow-glow);
+}
+
+.card-header {
+    background: var(--gr-grad-card-header);
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--gr-border);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.card-header:hover {
+    background: rgba(19, 81, 180, 0.05);
+}
+
+.card-header h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gr-text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-header h3 i {
+    color: var(--gr-primary);
+}
+
+.accordion-icon {
+    font-size: 0.8rem;
+    color: var(--gr-text-muted);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-panel.collapsed .accordion-icon {
+    transform: rotate(-90deg);
+}
+
+.card-panel.collapsed .card-body {
+    display: none;
+}
+
+.card-body {
+    padding: 12px;
+}
+
+/* File Dropzone GeoReport */
+.file-dropzone {
+    border: 2px dashed var(--gr-shadow-glow);
+    border-radius: var(--gr-radius-sm);
+    padding: 16px 12px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(19, 81, 180, 0.02);
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.file-dropzone:hover {
+    border-color: var(--gr-primary);
+    background: rgba(19, 81, 180, 0.08);
+    box-shadow: var(--gr-shadow-glow);
+}
+
+.drop-icon {
+    font-size: 1.6rem;
+    color: var(--gr-primary);
+    margin-bottom: 6px;
+}
+
+.file-dropzone p {
+    font-size: 0.78rem;
+    color: var(--gr-text-muted);
+}
+
+.file-dropzone input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Botões GeoReport */
+.btn {
+    padding: 8px 14px;
+    border-radius: var(--gr-radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.01em;
+}
+
+.btn-primary {
+    background: var(--gr-grad-primary);
+    color: #ffffff;
+    box-shadow: 0 2px 10px var(--gr-shadow-glow);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 4px 18px var(--gr-shadow-glow);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--gr-text-main);
+    border: 1px solid var(--gr-border);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: var(--gr-primary);
+    color: var(--gr-primary);
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+    padding: 9px;
+    margin-top: 10px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--gr-border);
+    color: var(--gr-text-main);
+    width: 100%;
+    text-decoration: none;
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 8px;
+    border-radius: var(--gr-radius-sm);
+}
+
+.btn-outline:hover {
+    border-color: var(--gr-primary);
+    color: var(--gr-primary);
+    background: rgba(19, 81, 180, 0.05);
+}
+
+/* Abas e Tabelas */
+.tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--gr-border);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 6px;
+    background: transparent;
+    border: none;
+    color: var(--gr-text-muted);
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    color: var(--gr-primary);
+    border-bottom-color: var(--gr-primary);
+    font-weight: 600;
+}
+
+.table-scroll-container {
+    max-height: 160px;
+    overflow-y: auto;
+    border: 1px solid var(--gr-border);
+    border-radius: var(--gr-radius-sm);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.table-isd {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.76rem;
+}
+
+.table-isd th, .table-isd td {
+    padding: 5px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--gr-border);
+}
+
+.table-isd th {
+    color: var(--gr-text-muted);
+    font-weight: 600;
+    background: var(--gr-bg-surface);
+    position: sticky;
+    top: 0;
+}
+
+.table-isd input {
+    width: 100%;
+    background: var(--gr-bg-main);
+    border: 1px solid var(--gr-border);
+    color: var(--gr-primary);
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.76rem;
+}
+
+/* Camadas e Opacidade */
+.layer-item {
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.02);
+    padding: 6px 10px;
+    border-radius: var(--gr-radius-sm);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.layer-item:hover {
+    border-color: var(--gr-border);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.layer-item label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.layer-item input[type="radio"] {
+    accent-color: var(--gr-primary);
+}
+
+.opacity-control {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--gr-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+    color: var(--gr-text-muted);
+}
+
+.opacity-control input[type="range"] {
+    flex: 1;
+    accent-color: var(--gr-primary);
+}
+
+/* Sliders de Fine-Tuning */
+.break-slider-group {
+    margin-bottom: 12px;
+    background: var(--gr-bg-main);
+    padding: 10px;
+    border-radius: var(--gr-radius-sm);
+    border: 1px solid var(--gr-border);
+}
+
+.break-slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+}
+
+.break-slider-header label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.dot-color {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+.break-input-val {
+    width: 70px;
+    background: var(--gr-bg-surface);
+    border: 1px solid var(--gr-primary);
+    color: var(--gr-primary);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-align: center;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.break-range-slider {
+    width: 100%;
+    height: 6px;
+    accent-color: var(--gr-primary);
+    cursor: pointer;
+}
+
+/* Estatísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.stat-card {
+    background: var(--gr-bg-main);
+    padding: 8px;
+    border-radius: var(--gr-radius-sm);
+    border: 1px solid var(--gr-border);
+    text-align: center;
+}
+
+.stat-card label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--gr-text-muted);
+}
+
+.stat-card span {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--gr-primary);
+}
+
+.stats-jenks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.jenks-item {
+    background: var(--gr-bg-main);
+    padding: 8px 10px;
+    border-radius: var(--gr-radius-sm);
+    border: 1px solid var(--gr-border);
+    font-size: 0.78rem;
+}
+
+.jenks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.jenks-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.jenks-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.download-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Container do Mapa Leaflet */
+.map-container {
+    flex: 1;
+    position: relative;
+    background-color: #ffffff;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Legenda Flutuante do Mapa (Glassmorphism GeoReport) */
+.map-legend {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    background: var(--gr-bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--gr-border);
+    border-radius: var(--gr-radius-md);
+    padding: 12px 16px;
+    z-index: 1000;
+    box-shadow: var(--gr-shadow-md);
+    min-width: 220px;
+}
+
+.map-legend h4 {
+    font-size: 0.82rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--gr-text-main);
+}
+
+.continuous-bar {
+    height: 12px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #30123b, #4686fb, #1ae4b6, #a2fc3c, #faba39, #e4460a, #7a0403);
+    margin: 8px 0 6px 0;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.continuous-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: var(--gr-text-muted);
+}
+
+.legend-items {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.legend-row {
+    font-size: 0.76rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gr-text-main);
+}
+
+.legend-color {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   Estilos Corridas e Enxurradas
+   ========================================================================== */
+
+.panel-hidden {
+    display: none;
+}
+
+.corridas-slider-group {
+    margin-bottom: 12px;
+    background: var(--gr-bg-main);
+    padding: 10px;
+    border-radius: var(--gr-radius-sm);
+    border: 1px solid var(--gr-border);
+}
+
+.corridas-stat-card {
+    background: var(--gr-bg-main);
+    padding: 8px;
+    border-radius: var(--gr-radius-sm);
+    border: 1px solid var(--gr-border);
+    text-align: center;
+}
+
+.corridas-stat-card label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--gr-text-muted);
+}
+
+.corridas-stat-card span {
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+/* Transições suaves para os painéis */
+#panels-movmassa, #panels-corridas {
+    transition: opacity 0.3s ease;
+}
